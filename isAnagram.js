@@ -1,27 +1,15 @@
 var fs = require('fs'); 
+var _ = require('underscore');
 
-var dictionary = {}; 
 
-var populateDictionary = function(){ 
-  
-  fs.readFile('wordlist.txt', 'utf8', function(err, content){ 
-    if( err ) { 
-      throw "error reading file"; 
-    } 
-    var words = content.split("\n"); 
-    for(var i = 0; i < words.length; i++ ){ 
-      dictionary[words[i]] = true; 
-    } 
-  }); 
-}; 
 
-var isAnagram = function(word){ 
-  return isAnagram0('', word);
+var isAnagram = function(word, dictionary){ 
+  return isAnagram0('', word, dictionary);
 } 
 
-var isAnagram0 = function(sofar, rest){ 
-  if( dictionary[sofar] ){ 
-    return true; 
+var isAnagram0 = function(sofar, rest, dictionary){ 
+  if( rest.length === 0 ){
+    return dictionary[sofar]; 
   } else { 
     for( var i = 0; i < rest.length; i++ ){ 
       var remaining = rest.substring(0,i) + rest.substring(i+1); 
@@ -35,11 +23,26 @@ var isAnagram0 = function(sofar, rest){
 }; 
 
 var test0 = function(){ 
-  populateDictionary(); 
-  console.log(isAnagram('exit'));  
+  var dictionary = {}; 
+  
+  fs.readFile('wordsEn.txt', 'utf8', function(err, content){ 
+    if( err ) { 
+      throw "error reading file"; 
+    } 
+    var words = content.split("\n"); 
+    words = _.map(words, function(word){ 
+      return word.trim();
+    }); 
+    
+    _.each(words, function(word){  
+      dictionary[word] = true; 
+    }); 
+    
+    console.log("expected true, got:",isAnagram('exit',dictionary)); 
+    console.log("expected false, got:", isAnagram('wsft', dictionary)); 
+  }); 
 }; 
 
-test0(); 
 
-console.log( dictionary['exit'] ); 
+test0(); 
     
