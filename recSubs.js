@@ -30,26 +30,13 @@ var recSubs2 = function(sofar, rest, depth) {
   }
 };
 
-var test = function(){
-  recS('','abc');
-}
-
-var test1 = function(){
-  
-};
-
-var test2 = function(){
-  recSubs2('','abc', 0);
-};
-
 
 if( process.argv[2] == 0 ){
   recSubs('', 'abc');
 }
 
-console.log(process.argv[3]);
 if( process.argv[2] == 1 ){
   var start = process.argv[3];
   start = start || 'abc';   
-  recSubs2('', start); 
+  recSubs2('', start,0); 
 }

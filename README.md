@@ -1,6 +1,6 @@
 Recursive Patterns
 ==================
-You can run the recurisve subsets from node using command line arguments to specify both the test (indented or unindented) and the string to use. 
+You can run the file recSubs.js from the command line using node. Specify both the test (unindented is 0 or indented is test 1) and the string you want to use. 
 
 For those not familiar with the command line, it's as simple as navigating to the directory and running the following command
 
@@ -13,8 +13,7 @@ Concretely, here's what each component of that command line does.
 uses node to run the file recSubs.js. 
 
     1 and abcd 
-    1 and abcd 
 
-are argments that are available in in process.argv. recSubs uses 1 to specify that test1 should run and 'abcd' becomes the string. Let me know if you have any trouble getting the files to run. 
+are argments that are available in process.argv. The 1 specifies that you want to use indented version and 'abcd' sets 'abcd' as the starting string.
 
 Anthony 
