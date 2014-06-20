@@ -18,9 +18,7 @@ var recSubs = function(sofar, rest) {
 };
 
 
-var test = function(){
-  recS('','abc');
-}
+
 
 var recSubs2 = function(sofar, rest, depth) {
   console.log(makeIndent(depth), "called with sofar: ", sofar, "rest: ", rest);
@@ -32,14 +30,26 @@ var recSubs2 = function(sofar, rest, depth) {
   }
 };
 
+var test = function(){
+  recS('','abc');
+}
+
 var test1 = function(){
-  recSubs('', 'abc');
+  
 };
 
 var test2 = function(){
   recSubs2('','abc', 0);
 };
 
-test1();
-console.log('---');
-test2();
+
+if( process.argv[2] == 0 ){
+  recSubs('', 'abc');
+}
+
+console.log(process.argv[3]);
+if( process.argv[2] == 1 ){
+  var start = process.argv[3];
+  start = start || 'abc';   
+  recSubs2('', start); 
+}
