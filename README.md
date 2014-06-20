@@ -1,6 +1,6 @@
 Recursive Patterns
 ==================
-You can run the file recSubs.js from the command line using node. Specify both the test (unindented is 0 or indented is test 1) and the string you want to use. 
+You can run the file recSubs.js from the command line using node. Specify both the version you want (unindented=0, indented=1) and the string you want to use. 
 
 For those not familiar with the command line, it's as simple as navigating to the directory and running the following command
 
